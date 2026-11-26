@@ -1,0 +1,7 @@
+Options -Indexes
+<FilesMatch "^(config\.php|crear_personal\.php)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "\.(log|sql|ini|env)$">
+  Require all denied
+</FilesMatch>
