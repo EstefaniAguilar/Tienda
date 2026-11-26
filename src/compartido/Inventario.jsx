@@ -1,0 +1,5 @@
+import React from "react";
+import { AlertTriangle, Boxes, X } from "lucide-react";
+import { PageHeading, Stat, StockStatus } from "./componentes";
+
+export function Inventory({products,lowStock,outStock,onEdit}) { return <><PageHeading eyebrow="CONTROL DE EXISTENCIAS" title="Inventario" subtitle="El inventario se descuenta al vender y genera alertas al alcanzar el mínimo."/><div className="stats-grid three"><Stat icon={Boxes} label="Productos registrados" value={products.length} tone="blue"/><Stat icon={AlertTriangle} label="Stock bajo" value={lowStock.length} tone="orange"/><Stat icon={X} label="Agotados" value={outStock.length} tone="purple"/></div><div className="panel"><div className="table-wrap"><table><thead><tr><th>Producto</th><th>Existencia</th><th>Mínimo</th><th>Estado</th>{onEdit&&<th>Acción</th>}</tr></thead><tbody>{products.map(p=><tr key={p.id}><td><b>{p.name}</b></td><td>{p.stock} unidades</td><td>{p.minStock} unidades</td><td><StockStatus product={p}/></td>{onEdit&&<td><button className="small-outline" onClick={()=>onEdit(p)}>Editar stock</button></td>}</tr>)}</tbody></table></div></div></>; }
